@@ -7,7 +7,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>React Start</h1>
-				<Person/>
+				<Person name="Igor" age = "30">Moje hobby: sport</Person>
 			</div>
 
 			// równoważny zapis
