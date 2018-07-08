@@ -25,7 +25,12 @@ class App extends Component {
 			<div className="App">
 				<h1>React Start</h1>
 				<button onClick={this.switchNameHandler}>Zmień osobę</button>
-				<Person name={this.state.persons[this.state.curPerson].name} age = {this.state.persons[this.state.curPerson].age}>Moje hobby: sport</Person>
+				<Person
+					name={this.state.persons[this.state.curPerson].name}
+					age = {this.state.persons[this.state.curPerson].age}
+					click = {this.switchNameHandler}>
+					Moje hobby: sport
+				</Person>
 			</div>
 
 			// równoważny zapis
