@@ -13,36 +13,46 @@ class App extends Component {
 		curPerson: 0
 	};
 
-	switchNameHandler = (newPos) => {
-		let curPerson = this.state.curPerson;
-		if (newPos !== null) curPerson = 0;
-		else {
-			if (curPerson < this.state.persons.length - 1) curPerson++;
-			else curPerson = 0;
-		}
-		this.setState({curPerson});
+	switchNameHandler = (newName) => {
+		this.setState({persons: [
+				{name: newName, age: 30},
+				{name: 'Anna', age: 25},
+				{name: 'Marcin', age: 33}
+			]});
 	};
 
 	nameChangeHandler = (event) => {
-		let curPerson = parseInt(event.target.value);
-		if (curPerson !== null && curPerson >= 0 && curPerson < this.state.persons.length)
-		this.setState({curPerson});
-		else this.setState({curPerson: 0})
+		this.setState({persons: [
+				{name: event.target.value, age: 30},
+				{name: 'Anna', age: 25},
+				{name: 'Marcin', age: 33}
+			]});
 	};
 
 	render() {
 		return (
 			<div className="App">
 				<h1>React Start</h1>
-				<button onClick={this.switchNameHandler.bind(this, 0)}>Zmień osobę</button>
-				{/*<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/}
+				{/*<button onClick={this.switchNameHandler.bind(this, 0)}>Zmień osobę</button>
+				<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/}
 				<Person
-					name={this.state.persons[this.state.curPerson].name}
-					age = {this.state.persons[this.state.curPerson].age}
+					name={this.state.persons[0].name}
+					age = {this.state.persons[0].age}
 					click = {this.switchNameHandler}
-					curPerson = {this.state.curPerson}
 					changeName = {this.nameChangeHandler}>
 					Moje hobby: sport
+				</Person>
+				<Person
+					name={this.state.persons[1].name}
+					age = {this.state.persons[1].age}
+					click = {this.switchNameHandler}
+					changeName = {this.nameChangeHandler}>
+				</Person>
+				<Person
+					name={this.state.persons[2].name}
+					age = {this.state.persons[2].age}
+					click = {this.switchNameHandler}
+					changeName = {this.nameChangeHandler}>
 				</Person>
 			</div>
 
