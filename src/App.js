@@ -26,15 +26,27 @@ class App extends Component {
 				{name: event.target.value, age: 30},
 				{name: 'Anna', age: 25},
 				{name: 'Marcin', age: 33}
-			]});
+			]
+		});
 	};
 
 	render() {
+		const btnStyle = {
+			backgroundColor: 'white',
+			font: 'inherit',
+			border: '1px solid blue',
+			padding: '8px',
+			cursor: 'pointer'
+		};
+
 		return (
 			<div className="App">
 				<h1>React Start</h1>
-				{/*<button onClick={this.switchNameHandler.bind(this, 0)}>Zmień osobę</button>
-				<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/}
+				<button
+					style = {btnStyle}
+					onClick={this.switchNameHandler.bind(this, "reset")}>Zmień imię
+				</button>
+				{/*<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/}
 				<Person
 					name={this.state.persons[0].name}
 					age = {this.state.persons[0].age}
