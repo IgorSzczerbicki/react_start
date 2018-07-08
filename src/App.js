@@ -13,10 +13,13 @@ class App extends Component {
 		curPerson: 0
 	};
 
-	switchNameHandler = () => {
+	switchNameHandler = (newPos) => {
 		let curPerson = this.state.curPerson;
-		if (curPerson < this.state.persons.length -1) curPerson++;
-		else curPerson = 0;
+		if (newPos !== null) curPerson = 0;
+		else {
+			if (curPerson < this.state.persons.length - 1) curPerson++;
+			else curPerson = 0;
+		}
 		this.setState({curPerson});
 	};
 
@@ -24,7 +27,8 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>React Start</h1>
-				<button onClick={this.switchNameHandler}>Zmień osobę</button>
+				<button onClick={this.switchNameHandler.bind(this, 0)}>Zmień osobę</button>
+				/*<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/
 				<Person
 					name={this.state.persons[this.state.curPerson].name}
 					age = {this.state.persons[this.state.curPerson].age}
