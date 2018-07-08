@@ -23,16 +23,25 @@ class App extends Component {
 		this.setState({curPerson});
 	};
 
+	nameChangeHandler = (event) => {
+		let curPerson = parseInt(event.target.value);
+		if (curPerson !== null && curPerson >= 0 && curPerson < this.state.persons.length)
+		this.setState({curPerson});
+		else this.setState({curPerson: 0})
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<h1>React Start</h1>
 				<button onClick={this.switchNameHandler.bind(this, 0)}>Zmień osobę</button>
-				/*<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/
+				{/*<button onClick={() => this.switchNameHandler(0)}>Zmień osobę</button>*/}
 				<Person
 					name={this.state.persons[this.state.curPerson].name}
 					age = {this.state.persons[this.state.curPerson].age}
-					click = {this.switchNameHandler}>
+					click = {this.switchNameHandler}
+					curPerson = {this.state.curPerson}
+					changeName = {this.nameChangeHandler}>
 					Moje hobby: sport
 				</Person>
 			</div>
