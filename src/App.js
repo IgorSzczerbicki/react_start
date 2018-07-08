@@ -9,13 +9,23 @@ class App extends Component {
 			{name: 'Igor', age: 30},
 			{name: 'Anna', age: 25},
 			{name: 'Marcin', age: 33}
-		]
+		],
+		curPerson: 0
 	};
+
+	switchNameHandler = () => {
+		let curPerson = this.state.curPerson;
+		if (curPerson < this.state.persons.length -1) curPerson++;
+		else curPerson = 0;
+		this.setState({curPerson});
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<h1>React Start</h1>
-				<Person name={this.state.persons[0].name} age = {this.state.persons[0].age}>Moje hobby: sport</Person>
+				<button onClick={this.switchNameHandler}>Zmień osobę</button>
+				<Person name={this.state.persons[this.state.curPerson].name} age = {this.state.persons[this.state.curPerson].age}>Moje hobby: sport</Person>
 			</div>
 
 			// równoważny zapis
